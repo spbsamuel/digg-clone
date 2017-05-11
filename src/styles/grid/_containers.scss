@@ -1,0 +1,45 @@
+/*
+===Global Container===
+Mobile < 680px
+  Max width -> 480px
+  outer light grey
+  inner white
+
+Tablet 680-960
+  Follow size of screen
+  all white
+
+Desktop 960-1200px
+  Follow size of screen till 1440px max
+  outer light grey
+  inner white
+*/
+
+html {
+  font-size: $root-mobile;
+  background-color: #f5f5f5;
+}
+
+body {
+}
+
+.container {
+}
+
+p {
+  -webkit-margin-before: 1rem;
+  -webkit-margin-after: 1rem;
+  font-size: $main-text-size-mobile;
+}
+.text-sm{
+  font-size: $main-text-size-mobile * $text-sm;
+}
+.text-md{
+  font-size: $main-text-size-mobile * $text-md;
+}
+.text-lg{
+  font-size: $main-text-size-mobile * $text-lg;
+}
+.text-xl{
+  font-size: $main-text-size-mobile * $text-xl;
+}
