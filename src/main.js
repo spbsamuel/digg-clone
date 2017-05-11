@@ -5,7 +5,6 @@ import {useRouterHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import createStore from './store/createStore';
 import AppContainer from './containers/AppContainer';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // ========================================================
 // Browser History Setup
@@ -103,5 +102,4 @@ if (__DEV__) {
 // ========================================================
 // Go!
 // ========================================================
-injectTapEventPlugin();
 render();
