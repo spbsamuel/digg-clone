@@ -25,7 +25,7 @@ class TopicForm extends React.Component {
 
   handleSubmit = () => {
     const {submitTopic, topicValid, topicText} = this.props;
-    if (topicValid){
+    if (topicValid) {
       submitTopic(topicText);
       this.setState({enterDown: false});
     }
@@ -46,15 +46,28 @@ class TopicForm extends React.Component {
         onKeyUp={this.handleKeyUp}
       />
         <div className={classes.form_info_bar}>
-          <span className={cx(classes.char_counter, {[classes.error_alert]: !topicValid && enterDown})}>
-            <span className={cx({[classes.count_error]: topicText.length >= 255 || topicText.length === 0 && enterDown})}>{topicText.length}</span>/254
-          </span>
-          <button className={cx(classes.form_submit, {[classes.active]: enterDown && topicValid, [classes.disabled]: !topicValid})} onClick={this.handleSubmit}><i className="material-icons">keyboard_return</i>
-          </button>
+          <CharCounter {...{topicValid, topicText, enterDown}}/>
+          <SubmitBtn enterDown={enterDown} topicValid={topicValid} handleSubmit={this.handleSubmit}/>
         </div>
       </div>
     )
   }
 }
+
+const CharCounter = ({enterDown, topicValid, topicText}) =>
+  <span className={cx(classes.char_counter, {[classes.error_alert]: !topicValid && enterDown})}>
+    <span className={cx({[classes.count_error]: topicText.length >= 255 || topicText.length === 0 && enterDown})}>
+      {topicText.length}
+    </span>/254
+  </span>;
+
+const SubmitBtn = ({topicValid, handleSubmit}) =>
+  <button
+    className={cx(classes.form_submit, {
+      [classes.active]: enterDown && topicValid,
+      [classes.disabled]: !topicValid
+    })}
+    onClick={handleSubmit}><i className="material-icons">keyboard_return</i>
+  </button>;
 
 export default TopicForm
