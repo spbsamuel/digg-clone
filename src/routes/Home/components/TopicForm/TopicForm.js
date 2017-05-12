@@ -61,7 +61,7 @@ const CharCounter = ({enterDown, topicValid, topicText}) =>
     </span>/254
   </span>;
 
-const SubmitBtn = ({topicValid, handleSubmit}) =>
+const SubmitBtn = ({enterDown, topicValid, handleSubmit}) =>
   <button
     className={cx(classes.form_submit, {
       [classes.active]: enterDown && topicValid,
