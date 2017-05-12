@@ -2,13 +2,17 @@ import React from 'react'
 import classes from './TopicListing.scss'
 import TopicCard from '../TopicCard'
 
-export const TopicListing = () => {
+export const TopicListing = ({topics, visibleTopics, upVoteTopic, downVoteTopic}) => {
   return (
     <div>
-      TopicListing
-      <TopicCard/>
-      <TopicCard/>
-      <TopicCard/>
+      {visibleTopics.map(id =>
+        <TopicCard
+          key={id}
+          {...topics[id]}
+          voteUp={upVoteTopic(id)}
+          voteDown={downVoteTopic(id)}
+        />
+      )}
     </div>
   )
 };

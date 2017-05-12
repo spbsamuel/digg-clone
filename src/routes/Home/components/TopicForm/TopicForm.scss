@@ -19,6 +19,7 @@
   border: 1px solid #7b7b7b;
   border-radius: 5px;
   outline: none;
+  cursor: pointer;
   transition: all .1s ease-in-out;
   i{
     display: block;
@@ -27,6 +28,9 @@
 .active,
 .form_submit:active{
   background: #f2f2f2;
+}
+.disabled.form_submit{
+  background: transparent;
 }
 
 .disabled.form_submit{

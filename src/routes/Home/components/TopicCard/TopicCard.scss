@@ -1,0 +1,58 @@
+.topic_card {
+  width: 100%;
+  border-radius: 5px;
+  background: #eaeaea;
+  min-height: 58px;
+  word-wrap: break-word;
+  margin: 10px 0;
+  display: flex;
+  border: 1px #797979 solid;
+  line-height: 0;
+  * {
+    line-height: normal;
+  }
+}
+
+.vote_btn {
+  height: 50%;
+  display: block;
+  margin-left: auto;
+  border: none;
+  outline: none;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  min-width: 70px;
+}
+
+.vote_col {
+  flex: 1;
+  min-width: 65px;
+  i, span {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 3px;
+  }
+  .vote_btn:first-child {
+    border-radius: 0 5px 0 0;
+    border: 1px #797979 solid;
+    border-top: none;
+    border-right: none;
+  }
+  .vote_btn:last-child {
+    border-radius: 0 0 5px 0;
+    border: 1px #797979 solid;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+.vote_btn:active {
+  opacity: 0.8;
+}
+
+.text_col {
+  flex: 1;
+  width: calc(100% - 65px);
+  padding: 10px;
+}

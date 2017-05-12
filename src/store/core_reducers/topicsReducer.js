@@ -7,6 +7,7 @@ import uuidV4 from 'uuid/v4'
 
 const SUBMIT_TOPIC = 'SUBMIT_TOPIC';
 const EDIT_TOPIC = 'EDIT_TOPIC';
+const VOTE_TOPIC = 'VOTE_TOPIC';
 
 // ------------------------------------
 // Actions
@@ -24,9 +25,16 @@ export const editTopic = topicText => ({
   topicText
 });
 
+export const voteTopic = (topicId, sentiment) => ({
+  type: VOTE_TOPIC,
+  sentiment,
+  topicId
+});
+
 export const actions = {
   SUBMIT_TOPIC,
-  EDIT_TOPIC
+  EDIT_TOPIC,
+  VOTE_TOPIC
 };
 
 // ------------------------------------
@@ -39,7 +47,7 @@ const handleSubmitTopic = (state, action) => {
   return {
     ...restState,
     topicText: '',
-    submitted: {...submitted, [uuid]: {topicText, createdAt, upVotes:0, downVotes:0}}
+    submitted: {...submitted, [uuid]: {topicText, createdAt, upVotes: 0, downVotes: 0}}
   }
 };
 
@@ -51,9 +59,22 @@ const handleEditTopic = (state, action) => {
   }
 };
 
+const handleVoteTopic = (state, action) => {
+  const {submitted, ...restState} = state;
+  const {sentiment, topicId} = action;
+  const topic = submitted[topicId];
+  if (!topic) return state;
+  const vote = sentiment ? 'upVotes' : 'downVotes';
+  return {
+    ...restState,
+    submitted: {...submitted, [topicId]: {...topic, [vote]: topic[vote] + 1}}
+  }
+};
+
 const ACTION_HANDLERS = {
   [SUBMIT_TOPIC]: handleSubmitTopic,
-  [EDIT_TOPIC]: handleEditTopic
+  [EDIT_TOPIC]: handleEditTopic,
+  [VOTE_TOPIC]: handleVoteTopic
 };
 
 // ------------------------------------

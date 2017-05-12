@@ -1,5 +1,5 @@
 export default (store) => ({
-  path: '/',
+  path: '/(:pageNo)',
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const HomeView = require('./HomeView').default;
