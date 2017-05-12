@@ -30,3 +30,8 @@ export const pagedTopTopicIds = createSelector(
   sortedTopicId,
   topicIds => pageNo => topicIds.slice(20 * (pageNo - 1), 20 * pageNo)
 );
+
+export const pagesAvailable = createSelector(
+  sortedTopicId,
+  topicIds => Math.ceil(topicIds.length/20) || 1
+);
