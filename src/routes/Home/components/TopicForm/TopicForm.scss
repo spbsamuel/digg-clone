@@ -1,0 +1,81 @@
+.text_box {
+  resize: none;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all .2s ease-in-out;
+}
+
+.text_box:focus {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 10px, rgba(0, 0, 0, 0.23) 0 3px 10px;
+}
+
+.form_submit{
+  vertical-align: middle;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid #7b7b7b;
+  border-radius: 5px;
+  outline: none;
+  transition: all .1s ease-in-out;
+  i{
+    display: block;
+  }
+}
+.active,
+.form_submit:active{
+  background: #f2f2f2;
+}
+
+.disabled.form_submit{
+  color: #f2f2f2;
+  border-color: #f2f2f2;
+}
+
+.char_counter{
+  vertical-align: middle;
+  padding: 0 10px;
+}
+
+.count_error{
+  color: #ff5856;
+}
+
+.form_info_bar{
+  padding: 10px 0;
+  text-align: right;
+}
+
+.error_alert {
+  display: inline-block;
+  transform-origin: center center;
+  animation-name: shake;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1; }
+
+@function apply-random($input) {
+  @return if($input != 0, random($input) - $input/2, 0);
+}
+
+@keyframes shake {
+  $intervals: 5;
+  $step: $intervals * 1%;
+
+  @while $step < 100% {
+    $rotate: apply-random(3deg);
+    $move-x: apply-random(3px);
+    $move-y: apply-random(3px);
+
+    #{$step} {
+      transform: translate($move-x, $move-y) rotate($rotate);
+    }
+
+    $step: $step + $intervals;
+  }
+
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); }
+}

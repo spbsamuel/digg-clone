@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './HomeView.scss'
-import TopicForm from '../components/TopicForm'
+import TopicForm from '../containers/TopicFormContainer'
 import TopicListing from '../components/TopicListing'
 import NavigationalButtons from '../components/NavigationalButtons'
 
